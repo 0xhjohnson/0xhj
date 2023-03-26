@@ -2,7 +2,7 @@ author:
   email: 0xhjohnson@pm.me
   name: Hunter Johnson
 baseURL: https://0xhj.com
-# enableGitInfo: true
+enableGitInfo: true
 
 languageCode: en-us
 markup:
