@@ -1,0 +1,47 @@
+author:
+  email: 0xhjohnson@pm.me
+  name: Hunter Johnson
+baseURL: https://0xhj.com
+# enableGitInfo: true
+
+languageCode: en-us
+markup:
+  highlight:
+    style: xcode
+
+menu:
+  main:
+    - name: home
+      pageRef: /
+      url: /
+      weight: 1
+    - name: blog
+      pageRef: posts
+      url: /posts/
+      weight: 2
+    - name: tags
+      pageRef: tags
+      url: /tags/
+      weight: 3
+
+params:
+  dateFormat: 02 January 2006
+  ogImage: /images/og.png
+  sitename: 0xhj
+  social:
+    - external: true
+      name: github
+      url: https://github.com/0xhjohnson
+    - name: publickey
+      url: /publickey.txt
+    - name: mail
+      url: mailto:0xhjohnson@pm.me
+    - external: true
+      name: unsplash
+      url: https://unsplash.com/@0xhjohnson
+  twitter: '@0xhjohnson'
+
+taxonomies:
+  tag: tags
+
+title: 0xhj

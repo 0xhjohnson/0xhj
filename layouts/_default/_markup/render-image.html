@@ -1,0 +1,24 @@
+{{ $src := .Page.Resources.GetMatch (printf "%s" (.Destination | safeURL)) }}
+{{ $alt := .PlainText | safeHTML }}
+
+{{ if $src }}
+{{ $data := newScratch }}
+{{ $data.Set "sm" ($src.Resize "420x webp") }}
+{{ $data.Set "md" ($src.Resize "640x webp") }}
+{{ $data.Set "lg" ($src.Resize "1024x webp") }}
+{{ $data.Set "xl" ($src.Resize "1280x webp") }}
+
+{{ $sm := $data.Get "sm" }}
+{{ $md := $data.Get "md" }}
+{{ $lg := $data.Get "lg" }}
+{{ $xl := $data.Get "xl" }}
+
+
+<picture>
+	<source srcset="{{ $xl.RelPermalink }}" media="(min-width: 1024px)" />
+	<source srcset="{{ $lg.RelPermalink }}" media="(min-width: 640px)" />
+	<source srcset="{{ $md.RelPermalink }}" media="(min-width: 420px)" />
+	<img alt="{{ $alt }}" title="{{ $alt }}" src="{{ $sm.RelPermalink }}" height="{{ $sm.Height }}"
+		width="{{ $sm.Width }}" loading="lazy" decoding="async" class="w-full h-auto" srcset="{{ $sm.RelPermalink }}" />
+</picture>
+{{ end }}

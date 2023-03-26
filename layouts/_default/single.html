@@ -1,0 +1,12 @@
+{{ define "main" }}
+<header class="max-w-prose mb-8">
+  <h1 class="mb-3 text-2xl font-extrabold tracking-tight lg:text-3xl">
+    {{ .Title }}
+  </h1>
+  {{ partial "date-tags.html" . }}
+</header>
+<article
+  class="prose prose-slate lg:prose-lg prose-code:text-gray-900 prose-pre:border-gray-200 prose-pre:border prose-a:no-underline prose-a:border-b prose-a:border-b-pink-300 hover:prose-a:border-b-2">
+  {{ .Content }}
+</article>
+{{ end }}

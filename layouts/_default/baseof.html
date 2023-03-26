@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="{{ .Language }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {{ $title := print .Title " | " .Site.Title }}
+    {{ if .IsHome }}{{ $title = .Site.Title }}{{ end }}
+    <title>{{ $title }}</title>
+    {{ partial "meta.html" . }}
+    {{ partialCached "css.html" . }}
+    {{ partial "favicon.html" . }}
+    {{ with .OutputFormats.Get "rss" -}}
+        {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+    {{ end -}}
+  </head>
+
+  <body class="bg-gray-50 text-gray-700 antialiased px-4 sm:px-6 md:px-8">
+    {{ partial "nav.html" . }}
+    {{ if not .IsHome }}
+      {{ partial "breadcrumb.html" . }}
+    {{ end }}
+    <main class="max-w-prose mx-auto">{{ block "main" . }}{{ end }}</main>
+    {{ partial "footer.html" . }}
+  </body>
+</html>

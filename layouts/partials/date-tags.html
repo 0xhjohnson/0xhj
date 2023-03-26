@@ -1,0 +1,12 @@
+{{ $dateTime := .PublishDate.Format "2006-01-02" }}
+{{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}
+<time datetime="{{ $dateTime }}" class="text-sm">{{ .PublishDate.Format $dateFormat }}</time>
+<div class="inline before:content-['|'] text-sm">
+	{{ range $i, $tag := .GetTerms "tags" }}
+	{{- if $i }},{{ end }}
+	<a href="{{ .RelPermalink }}"
+		class="before:content-['#'] text-gray-900 border-b border-b-pink-300 hover:border-b-2">
+		{{- .LinkTitle -}}
+	</a>
+	{{- end }}
+</div>

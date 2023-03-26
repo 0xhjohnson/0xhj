@@ -1,0 +1,17 @@
+{
+  "name": "0xhj",
+  "version": "1.0.0",
+  "description": "ramblings from 0xhj",
+  "main": "index.js",
+  "author": "Hunter Johnson <0xhjohnson@pm.me>",
+  "license": "MIT",
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.9",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0",
+    "prettier": "^2.8.4",
+    "prettier-plugin-go-template": "^0.0.13",
+    "tailwindcss": "^3.2.7"
+  }
+}
