@@ -3,6 +3,7 @@ author:
   name: Hunter Johnson
 baseURL: https://0xhj.com
 enableGitInfo: true
+enableRobotsTXT: true
 
 languageCode: en-us
 markup:
