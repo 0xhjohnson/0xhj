@@ -1,11 +1,13 @@
 <header class="mb-12 pt-12 flex max-w-prose mx-auto space-x-4">
   {{ $image := resources.Get "images/avi.png" }}
-  {{ $image := $image.Resize "120x webp" }}
+  {{ $smImage := $image.Resize "120x webp" }}
+  {{ $mdImage := $image.Resize "240x webp" }}
   {{ with $image }}
     <img
-      src="{{ .RelPermalink }}"
-      width="{{ .Width }}"
-      height="{{ .Height }}"
+      src="{{ $smImage.RelPermalink }}"
+      srcset="{{ $smImage.RelPermalink }} 1x, {{ $mdImage.RelPermalink }} 2x"
+      width="{{ $smImage.Width }}"
+      height="{{ $smImage.Height }}"
       alt="0xhj and apollo avi"
     />
   {{ end }}
