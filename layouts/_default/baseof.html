@@ -17,7 +17,7 @@
 
   <body class="bg-gray-50 text-gray-700 antialiased px-4 sm:px-6 md:px-8">
     {{ partial "nav.html" . }}
-    {{ if not .IsHome }}
+    {{ if and (not .IsHome) (ne .Kind "404") }}
       {{ partial "breadcrumb.html" . }}
     {{ end }}
     <main class="max-w-prose mx-auto">{{ block "main" . }}{{ end }}</main>
