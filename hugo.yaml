@@ -26,7 +26,6 @@ menu:
       weight: 3
 
 params:
-  dateFormat: 02 January 2006
   description: Sup, my name is Hunter but most people call me 0x. I build software and ramble about random things that interest me.
   ogImage: /images/og.png
   sitename: 0xhj

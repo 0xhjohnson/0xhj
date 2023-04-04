@@ -10,8 +10,7 @@
       {{ range .Pages.ByPublishDate.Reverse }}
       <li class="flex flex-col flex-wrap gap-x-2 sm:flex-row sm:items-center [&_q]:w-full">
         {{ $dateTime := .PublishDate.Format "2006-01-02" }}
-        {{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}
-        <time datetime="{{ $dateTime }}" class="text-sm">{{ .PublishDate.Format $dateFormat }}</time>
+        <time datetime="{{ $dateTime }}" class="text-sm">{{ .PublishDate | time.Format ":date_medium" }}</time>
         <h2>
           <a class="font-semibold text-gray-900 border-b border-b-pink-300 hover:border-b-2 hover:-mb-px"
             href="{{ .RelPermalink }}">

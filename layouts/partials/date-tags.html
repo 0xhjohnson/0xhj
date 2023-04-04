@@ -1,6 +1,5 @@
 {{ $dateTime := .PublishDate.Format "2006-01-02" }}
-{{ $dateFormat := .Site.Params.dateFormat | default "Jan 2, 2006" }}
-<time datetime="{{ $dateTime }}" class="text-sm">{{ .PublishDate.Format $dateFormat }}</time>
+<time datetime="{{ $dateTime }}" class="text-sm">{{ .PublishDate | time.Format ":date_long" }}</time>
 <div class="inline before:content-['|'] text-sm">
 	{{ range $i, $tag := .GetTerms "tags" }}
 	{{- if $i }},{{ end }}
