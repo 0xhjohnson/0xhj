@@ -1,31 +1,33 @@
 <footer class="max-w-prose mx-auto pt-16 pb-12">
-  <div
-    class="flex flex-col justify-center items-center gap-y-3 sm:flex-row sm:justify-between sm:text-xs"
-  >
-    <small class="text-sm sm:text-xs"
-      >copyright &copy; {{ now.Year }} hunter johnson</small
-    >
-    <nav
-      aria-label="More on this site"
-      class="flex gap-x-2 sm:gap-x-0 sm:divide-x sm:divide-gray-500"
-    >
-      {{ $currentPage := . }}
-      {{ range .Site.Menus.main }}
-        {{ if $currentPage.IsMenuCurrent "main" . }}
-          <a
-            href="{{ .URL }}"
-            class="font-medium text-sm sm:text-xs first:pl-0 px-4 text-gray-700"
-            aria-current="page"
-            >{{ .Name }}</a
-          >
-        {{ else }}
-          <a
-            href="{{ .URL }}"
-            class="font-medium text-sm sm:text-xs first:pl-0 px-4 text-gray-500 hover:text-gray-700"
-            >{{ .Name }}</a
-          >
-        {{ end }}
-      {{ end }}
-    </nav>
-  </div>
+	<div
+		class="flex flex-col justify-center items-center gap-y-3 sm:flex-row sm:justify-between sm:text-xs"
+	>
+		<small class="text-sm sm:text-xs">
+			copyright &copy; {{ now.Year }} hunter johnson
+		</small>
+		<nav
+			aria-label="More on this site"
+			class="flex gap-x-2 sm:gap-x-0 sm:divide-x sm:divide-gray-500"
+		>
+			{{ $currentPage := . }}
+			{{ range .Site.Menus.main }}
+				{{ if $currentPage.IsMenuCurrent "main" . }}
+					<a
+						href="{{ .URL }}"
+						class="font-medium text-sm sm:text-xs first:pl-0 px-4 text-gray-700"
+						aria-current="page"
+					>
+						{{ .Name }}
+					</a>
+				{{ else }}
+					<a
+						href="{{ .URL }}"
+						class="font-medium text-sm sm:text-xs first:pl-0 px-4 text-gray-500 hover:text-gray-700"
+					>
+						{{ .Name }}
+					</a>
+				{{ end }}
+			{{ end }}
+		</nav>
+	</div>
 </footer>

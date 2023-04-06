@@ -1,9 +1,9 @@
 {{ $styles := resources.Get "css/main.css" }}
 {{ $styles = $styles | resources.PostCSS }}
 {{ if hugo.IsProduction }}
-  {{ $styles = $styles | minify | resources.PostProcess }}
+	{{ $styles = $styles | minify | resources.PostProcess }}
 {{ else }}
-  {{ $styles = $styles | resources.ExecuteAsTemplate (printf "css/index.dev.%v.css" now.UnixMilli) . }}
+	{{ $styles = $styles | resources.ExecuteAsTemplate (printf "css/index.dev.%v.css" now.UnixMilli) . }}
 {{ end }}
 
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}" />

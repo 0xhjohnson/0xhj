@@ -1,39 +1,47 @@
 {{ define "main" }}
-<header class="mb-4">
-  <h1 class="text-2xl font-extrabold tracking-tight lg:text-3xl">
-    {{ .Title }}
-  </h1>
-</header>
-<div class="grid gap-y-12 sm:grid-cols-[3fr_1fr] sm:gap-x-8">
-  <section aria-label="Blog post list">
-    <ul class="space-y-8">
-      {{ range .Pages.ByPublishDate.Reverse }}
-      <li class="flex flex-col flex-wrap gap-x-2 sm:flex-row sm:items-center [&_q]:w-full">
-        {{ $dateTime := .PublishDate.Format "2006-01-02" }}
-        <time datetime="{{ $dateTime }}" class="text-sm">{{ .PublishDate | time.Format ":date_medium" }}</time>
-        <h2>
-          <a class="font-semibold text-gray-900 border-b border-b-pink-300 hover:border-b-2 hover:-mb-px"
-            href="{{ .RelPermalink }}">
-            {{ .Title }}
-          </a>
-        </h2>
-        <q class="line-clamp-4 mt-2 italic">{{ .Summary }}</q>
-      </li>
-      {{ end }}
-    </ul>
-  </section>
-  <aside>
-    <h2 class="mb-3 text-lg font-semibold lg:text-xl">Tags</h2>
-    <ul class="flex flex-wrap gap-3">
-      {{ range first 8 .Site.Taxonomies.tags.ByCount }}
-      <li>
-        <a class="before:content-['#'] font-medium text-sm border-b border-b-pink-300 hover:border-b-2"
-          href="{{ .Page.RelPermalink }}">
-          {{- .Page.Name -}}
-        </a>
-      </li>
-      {{ end }}
-    </ul>
-  </aside>
-</div>
+	<header class="mb-4">
+		<h1 class="text-2xl font-extrabold tracking-tight lg:text-3xl">
+			{{ .Title }}
+		</h1>
+	</header>
+	<div class="grid gap-y-12 sm:grid-cols-[3fr_1fr] sm:gap-x-8">
+		<section aria-label="Blog post list">
+			<ul class="space-y-8">
+				{{ range .Pages.ByPublishDate.Reverse }}
+					<li
+						class="flex flex-col flex-wrap gap-x-2 sm:flex-row sm:items-center [&_q]:w-full"
+					>
+						{{ $dateTime := .PublishDate.Format "2006-01-02" }}
+						<time datetime="{{ $dateTime }}" class="text-sm">
+							{{ .PublishDate | time.Format ":date_medium" }}
+						</time>
+						<h2>
+							<a
+								class="font-semibold text-gray-900 border-b border-b-pink-300 hover:border-b-2 hover:-mb-px"
+								href="{{ .RelPermalink }}"
+							>
+								{{ .Title }}
+							</a>
+						</h2>
+						<q class="line-clamp-4 mt-2 italic">{{ .Summary }}</q>
+					</li>
+				{{ end }}
+			</ul>
+		</section>
+		<aside>
+			<h2 class="mb-3 text-lg font-semibold lg:text-xl">Tags</h2>
+			<ul class="flex flex-wrap gap-3">
+				{{ range first 8 .Site.Taxonomies.tags.ByCount }}
+					<li>
+						<a
+							class="before:content-['#'] font-medium text-sm border-b border-b-pink-300 hover:border-b-2"
+							href="{{ .Page.RelPermalink }}"
+						>
+							{{- .Page.Name -}}
+						</a>
+					</li>
+				{{ end }}
+			</ul>
+		</aside>
+	</div>
 {{ end }}

@@ -1,11 +1,15 @@
 {{ $dateTime := .PublishDate.Format "2006-01-02" }}
-<time datetime="{{ $dateTime }}" class="text-sm">{{ .PublishDate | time.Format ":date_long" }}</time>
+<time datetime="{{ $dateTime }}" class="text-sm">
+	{{ .PublishDate | time.Format ":date_long" }}
+</time>
 <div class="inline before:content-['|'] text-sm">
 	{{ range $i, $tag := .GetTerms "tags" }}
-	{{- if $i }},{{ end }}
-	<a href="{{ .RelPermalink }}"
-		class="before:content-['#'] text-gray-900 border-b border-b-pink-300 hover:border-b-2">
-		{{- .LinkTitle -}}
-	</a>
+		{{- if $i }},{{ end }}
+		<a
+			href="{{ .RelPermalink }}"
+			class="before:content-['#'] text-gray-900 border-b border-b-pink-300 hover:border-b-2"
+		>
+			{{- .LinkTitle -}}
+		</a>
 	{{- end }}
 </div>

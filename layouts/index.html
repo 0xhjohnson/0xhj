@@ -1,35 +1,48 @@
 {{ define "main" }}
-<section>
-  <h1 class="mb-6 text-2xl font-extrabold tracking-tight lg:text-3xl" aria-label="wave hello ascii">
-    (^_^)/
-  </h1>
-  <p class="mb-4">
-    Sup, my name is Hunter but most people call me 0x. I build software and
-    ramble about random things that interest me.
-  </p>
-  <ul class="flex gap-x-4">
-    {{ range .Site.Params.social }}
-    <li>
-      <a href="{{ .url }}" class="text-sm border-b border-b-pink-300 hover:border-b-2 hover:-mb-px" {{ if eq .external true }} target="_blank" rel="noopener noreferrer" {{ end }}>{{ .name }}</a>
-    </li>
-    {{ end }}
-  </ul>
-</section>
-<section class="mt-12" aria-label="Blog post list">
-  <h2 class="mb-4 text-xl text-gray-900 font-semibold">Posts</h2>
-  <ul class="space-y-4 sm:space-y-2">
-    {{ range ( where .Site.RegularPages "Type" "posts" ) }}
-    <li class="flex flex-col gap-x-8 sm:flex-row sm:items-center">
-      {{ $dateTime := .PublishDate.Format "2006-01-02" }}
-      <time datetime="{{ $dateTime }}" class="text-sm text-gray-500">{{ .PublishDate.Format "02 Jan 2006" }}</time>
-      <h2>
-        <a class="text-gray-900 font-semibold border-b border-b-pink-300 hover:border-b-2 hover:-mb-px"
-          href="{{ .RelPermalink }}">
-          {{ .Title }}
-        </a>
-      </h2>
-    </li>
-    {{ end }}
-  </ul>
-</section>
+	<section>
+		<h1
+			class="mb-6 text-2xl font-extrabold tracking-tight lg:text-3xl"
+			aria-label="wave hello ascii"
+		>
+			(^_^)/
+		</h1>
+		<p class="mb-4">
+			Sup, my name is Hunter but most people call me 0x. I build software and
+			ramble about random things that interest me.
+		</p>
+		<ul class="flex gap-x-4">
+			{{ range .Site.Params.social }}
+				<li>
+					<a
+						href="{{ .url }}"
+						class="text-sm border-b border-b-pink-300 hover:border-b-2 hover:-mb-px"
+						{{ if eq .external true }}
+							target="_blank" rel="noopener noreferrer"
+						{{ end }}
+					>{{ .name }}</a>
+				</li>
+			{{ end }}
+		</ul>
+	</section>
+	<section class="mt-12" aria-label="Blog post list">
+		<h2 class="mb-4 text-xl text-gray-900 font-semibold">Posts</h2>
+		<ul class="space-y-4 sm:space-y-2">
+			{{ range ( where .Site.RegularPages "Type" "posts" ) }}
+				<li class="flex flex-col gap-x-8 sm:flex-row sm:items-center">
+					{{ $dateTime := .PublishDate.Format "2006-01-02" }}
+					<time datetime="{{ $dateTime }}" class="text-sm text-gray-500">
+            {{ .PublishDate.Format "02 Jan 2006" }}
+          </time>
+					<h2>
+						<a
+							class="text-gray-900 font-semibold border-b border-b-pink-300 hover:border-b-2 hover:-mb-px"
+							href="{{ .RelPermalink }}"
+						>
+							{{ .Title }}
+						</a>
+					</h2>
+				</li>
+			{{ end }}
+		</ul>
+	</section>
 {{ end }}
