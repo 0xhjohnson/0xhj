@@ -19,7 +19,9 @@
 						{{ if eq .external true }}
 							target="_blank" rel="noopener noreferrer"
 						{{ end }}
-					>{{ .name }}</a>
+					>
+						{{ .name }}
+					</a>
 				</li>
 			{{ end }}
 		</ul>
@@ -31,8 +33,8 @@
 				<li class="flex flex-col gap-x-8 sm:flex-row sm:items-center">
 					{{ $dateTime := .PublishDate.Format "2006-01-02" }}
 					<time datetime="{{ $dateTime }}" class="text-sm text-gray-500">
-            {{ .PublishDate.Format "02 Jan 2006" }}
-          </time>
+						{{ .PublishDate.Format "02 Jan 2006" }}
+					</time>
 					<h2>
 						<a
 							class="text-gray-900 font-semibold border-b border-b-pink-300 hover:border-b-2 hover:-mb-px"
