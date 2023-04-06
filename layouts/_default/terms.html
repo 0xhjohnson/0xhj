@@ -13,7 +13,10 @@
 				>
 					{{- .Page.Title -}}
 				</a>
-				<span class="ml-1">- {{ .Count }} posts</span>
+				{{ $count := .Count }}
+				<span class="ml-1"
+					>- {{ $count }} post{{ if gt 1 $count }}s{{ end }}</span
+				>
 			</li>
 		{{ end }}
 	</ul>
