@@ -53,7 +53,6 @@ params:
     - external: true
       name: unsplash
       url: https://unsplash.com/@0xhjohnson
-  twitter: '@0xhjohnson'
 
 summaryLength: 30
 taxonomies:
