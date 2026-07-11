@@ -1,0 +1,5 @@
+{{- /* Single source of truth for page width. Pages opt into the wide
+       container (galleries) with `wide: true` in front matter; everything
+       else stays prose-width. Used by baseof <main>, nav, breadcrumb, footer
+       so the whole page chrome aligns. */ -}}
+{{- cond (default false .Params.wide) "max-w-5xl" "max-w-prose" -}}

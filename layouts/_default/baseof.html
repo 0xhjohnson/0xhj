@@ -22,7 +22,7 @@
 		{{ if and (not .IsHome) (ne .Kind "404") }}
 			{{ partial "breadcrumb.html" . }}
 		{{ end }}
-		<main class="max-w-prose mx-auto">{{ block "main" . }}{{ end }}</main>
+		<main class="{{ partial "main-width.html" . }} mx-auto">{{ block "main" . }}{{ end }}</main>
 		{{ partial "footer.html" . }}
 	</body>
 </html>

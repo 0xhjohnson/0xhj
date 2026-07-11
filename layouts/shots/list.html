@@ -1,0 +1,76 @@
+{{ define "main" }}
+	<header class="max-w-prose mb-8">
+		<h1 class="mb-3 text-2xl font-extrabold tracking-tight lg:text-3xl">
+			{{ .Title }}
+		</h1>
+		{{ with .Content }}
+			<div class="prose prose-slate">{{ . }}</div>
+		{{ end }}
+	</header>
+
+	{{ $paginator := .Paginate .Pages.ByDate.Reverse }}
+	<ul class="columns-2 md:columns-3 gap-3">
+		{{ range $i, $p := $paginator.Pages }}
+			{{ with resources.Get $p.Params.image }}
+				{{ $t1 := .Resize "400x webp" }}
+				{{ $t2 := .Resize "800x webp" }}
+				{{ $alt := $p.Params.alt | default $p.Params.caption | default $p.Title }}
+				<li class="mb-3 break-inside-avoid">
+					<a
+						href="{{ $p.RelPermalink }}"
+						class="block rounded overflow-hidden focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-400"
+					>
+						<img
+							src="{{ $t1.RelPermalink }}"
+							srcset="{{ $t1.RelPermalink }} 1x, {{ $t2.RelPermalink }} 2x"
+							width="{{ $t1.Width }}"
+							height="{{ $t1.Height }}"
+							alt="{{ $alt }}"
+							{{ if lt $i 3 }}
+								loading="eager"
+								fetchpriority="high"
+							{{ else }}
+								loading="lazy"
+							{{ end }}
+							decoding="async"
+							class="w-full h-auto"
+						/>
+					</a>
+				</li>
+			{{ end }}
+		{{ end }}
+	</ul>
+
+	{{ if gt $paginator.TotalPages 1 }}
+		<nav
+			aria-label="Pagination"
+			class="mt-10 flex items-center justify-between text-sm font-medium"
+		>
+			{{ if $paginator.HasPrev }}
+				<a
+					href="{{ $paginator.Prev.URL }}"
+					rel="prev"
+					class="border-b border-b-pink-300 hover:border-b-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-400"
+				>
+					← newer
+				</a>
+			{{ else }}
+				<span class="text-gray-400">← newer</span>
+			{{ end }}
+			<span class="text-gray-600">
+				page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}
+			</span>
+			{{ if $paginator.HasNext }}
+				<a
+					href="{{ $paginator.Next.URL }}"
+					rel="next"
+					class="border-b border-b-pink-300 hover:border-b-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-400"
+				>
+					older →
+				</a>
+			{{ else }}
+				<span class="text-gray-400">older →</span>
+			{{ end }}
+		</nav>
+	{{ end }}
+{{ end }}

@@ -24,6 +24,19 @@ menu:
       pageRef: tags
       url: /tags/
       weight: 3
+    - name: shots
+      pageRef: shots
+      url: /shots/
+      weight: 4
+
+imaging:
+  quality: 82
+  resampleFilter: Lanczos
+  exif:
+    disableLatLong: true
+    includeFields: Model|LensModel|FNumber|ExposureTime|ISOSpeedRatings|FocalLength|DateTimeOriginal
+
+paginate: 12
 
 params:
   description: Sup, my name is Hunter but most people call me 0x. I build software and ramble about random things that interest me.
@@ -40,7 +53,6 @@ params:
     - external: true
       name: unsplash
       url: https://unsplash.com/@0xhjohnson
-  twitter: '@0xhjohnson'
 
 summaryLength: 30
 taxonomies:

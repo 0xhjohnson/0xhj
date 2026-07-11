@@ -1,0 +1,36 @@
+{{ define "main" }}
+	<article>
+		<h1 class="sr-only">{{ .Title }}</h1>
+		{{ with resources.Get .Params.image }}
+			{{ $full := .Resize "2048x q85 webp" }}
+			{{ $alt := $.Params.alt | default $.Params.caption | default $.Title }}
+			<figure>
+				<img
+					src="{{ $full.RelPermalink }}"
+					width="{{ $full.Width }}"
+					height="{{ $full.Height }}"
+					alt="{{ $alt }}"
+					fetchpriority="high"
+					decoding="async"
+					class="w-full h-auto rounded"
+				/>
+				{{ if or $.Params.caption .Exif }}
+					<figcaption class="mt-3 text-gray-600">
+						{{ with $.Params.caption }}
+							<span class="block">{{ . }}</span>
+						{{ end }}
+						{{ with .Exif }}
+							<span class="text-xs">
+								{{ with .Tags.Model }}{{ . }}{{ end }}
+								{{ with .Tags.FocalLength }} · {{ . }}mm{{ end }}
+								{{ with .Tags.FNumber }} · f/{{ . }}{{ end }}
+								{{ with .Tags.ExposureTime }} · {{ . }}s{{ end }}
+								{{ with .Tags.ISOSpeedRatings }} · ISO {{ . }}{{ end }}
+							</span>
+						{{ end }}
+					</figcaption>
+				{{ end }}
+			</figure>
+		{{ end }}
+	</article>
+{{ end }}
