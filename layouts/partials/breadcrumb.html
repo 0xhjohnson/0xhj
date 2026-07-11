@@ -1,4 +1,4 @@
-<nav class="pb-6 max-w-prose mx-auto flex" aria-label="Breadcrumb">
+<nav class="pb-6 {{ partial "main-width.html" . }} mx-auto flex" aria-label="Breadcrumb">
 	<ol role="list" class="flex items-center space-x-2 text-sm">
 		{{- range .Ancestors.Reverse }}
 			<li class="flex items-center">

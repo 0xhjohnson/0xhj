@@ -1,4 +1,4 @@
-<header class="mb-12 pt-12 flex max-w-prose mx-auto space-x-4">
+<header class="mb-12 pt-12 flex {{ partial "main-width.html" . }} mx-auto space-x-4">
 	{{ $image := resources.Get "images/avi.png" }}
 	{{ $smImage := $image.Resize "120x webp" }}
 	{{ $mdImage := $image.Resize "240x webp" }}
