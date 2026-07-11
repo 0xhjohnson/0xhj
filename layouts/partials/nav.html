@@ -1,7 +1,7 @@
 <header class="mb-12 pt-12 flex {{ partial "main-width.html" . }} mx-auto space-x-4">
 	{{ $image := resources.Get "images/avatar.jpg" }}
-	{{ $smImage := $image.Resize "120x webp" }}
-	{{ $mdImage := $image.Resize "240x webp" }}
+	{{ $smImage := $image.Resize "96x webp" }}
+	{{ $mdImage := $image.Resize "192x webp" }}
 	{{ with $image }}
 		<img
 			src="{{ $smImage.RelPermalink }}"
