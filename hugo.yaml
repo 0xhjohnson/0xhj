@@ -51,8 +51,8 @@ params:
     - name: mail
       url: mailto:0xhjohnson@pm.me
     - external: true
-      name: unsplash
-      url: https://unsplash.com/@0xhjohnson
+      name: discogs
+      url: https://www.discogs.com/user/0xhjohnson/collection
 
 summaryLength: 30
 taxonomies:
